@@ -1,5 +1,6 @@
 class WelcomePage:
     login_button = "xpath=//button[@title='Log in']"
+    login_button_DE = "xpath=//button[@title='Einloggen']"
     email_field = "#email"
     password_field = "#password"
     confirm_login = "button[class$='min-w-full']"

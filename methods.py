@@ -3,7 +3,7 @@ import time
 import pytest
 import subprocess
 import config
-from playwright.sync_api import Page, expect
+from playwright.sync_api import Page, expect, Playwright
 from datetime import datetime
 from pages.welcomePage import WelcomePage
 
@@ -65,7 +65,12 @@ class CustomMethods(Page):
     # @pytest.mark.parametrize("locale, username, password", [(key, val['locale'], val['username'], val['password']) for key, val in config.accounts])
     def base_login(self, email, password):
         self.visit_page(config.base_url)
-        self.click_on(WelcomePage.login_button)
+        
+        if self.check_not_visible(WelcomePage.login_button):
+            self.click_on(WelcomePage.login_button_DE)
+        else:
+            self.click_on(WelcomePage.login_button)
+
         self.click_on(WelcomePage.email_field)
         self.fill_in(WelcomePage.email_field, email)
         self.click_on_xpath(WelcomePage.password_field)
@@ -85,3 +90,7 @@ class CustomMethods(Page):
 
     def check_to_be_visible(self, locator):
         expect(self.page.locator(locator)).to_be_visible(timeout=100000000)
+
+    def check_not_visible(self, locator):
+        return self.page.locator(locator).is_hidden()
+  

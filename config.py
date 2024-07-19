@@ -1,6 +1,10 @@
 accounts = {
-    'EN': {'username': 'samoilenkofluttershy@gmail.com', 'password': '193786Az()'},
-    'Unbase': {'username': 'unbase@example.com', 'password': 'Unbase123'}
+    'NL': {'username': 'netherlands@kingbilly.xyz', 'password': 'KingBilly123!'},
+    'DE': {'username': 'germany@kingbilly.xyz', 'password': 'KingBilly123!'}, 
+    'BE': {'username': 'belgium@kingbilly.xyz', 'password': 'KingBilly123!'},
+    'AU': {'username': 'australia@kingbilly.xyz', 'password': 'KingBilly123!'},
+    'PT': {'username': 'portugal@kingbilly.xyz', 'password': 'KingBilly123!'},
+    'AT': {'username': 'austria@kingbilly.xyz', 'password': 'KingBilly123!'}
 
 }
 
