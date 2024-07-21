@@ -29,32 +29,31 @@ def test(playwright: Playwright, account_key: str) -> None:
 
     custom_methods.base_login(email, password)
 
-    custom_methods.check_to_be_visible(WelcomePage.pop_up)
-    page.reload()
-    custom_methods.check_to_be_visible(WelcomePage.deposit_button)
-    custom_methods.visit_page(config.wallet_url_deposit)
-
-    if page.locator(WelcomePage.wrapper).is_visible():
-        page.reload()
-    else:
-        pass
-
-    if page.locator(WelcomePage.pop_up).is_visible():
-        page.reload()
-    else:
-        pass
-
-    if AssertionError: "Locator expected to be visible"
-    page.reload()
-
-    
-    custom_methods.check_to_be_visible(Profile.profile_elements['deposit_promo_code'])
     time.sleep(10)
 
     if page.locator(WelcomePage.wrapper).is_visible():
         page.reload()
     else:
         pass
+
+    time.sleep(10)
+    if page.locator(WelcomePage.pop_up).is_visible():
+        page.reload()
+    else:
+        pass
+
+    time.sleep(10)
+    if page.locator(WelcomePage.wrapper).is_visible():
+        page.reload()
+    else:
+        pass
+
+    custom_methods.check_to_be_visible(WelcomePage.deposit_button)
+    custom_methods.visit_page(config.wallet_url_deposit)
+
+
+    custom_methods.check_to_be_visible(Profile.profile_elements['deposit_promo_code'])
+    time.sleep(10)
 
     time.sleep(10)
     custom_methods.capture_screenshot(account_key, 'Deposit')
