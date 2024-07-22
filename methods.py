@@ -35,6 +35,7 @@ class CustomMethods(Page):
             screenshot_path = os.path.join(dir_path, f"({locale})({profile_position})({counter}).png")
 
         self.page.screenshot(path=screenshot_path, full_page=False)
+        return screenshot_path
 
 
     def capture_screenshot_full(self, locale, profile_position):
@@ -59,6 +60,7 @@ class CustomMethods(Page):
             screenshot_path = os.path.join(dir_path, f"({locale})({profile_position})({counter}).png")
 
         self.page.screenshot(path=screenshot_path, full_page=True)
+        return screenshot_path
 
 
 
