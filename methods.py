@@ -13,7 +13,7 @@ class CustomMethods(Page):
     def __init__(self, page: Page):
         self.page = page
 
-    def capture_screenshot(self, locale, profile_position):
+    def capture_screenshot(self, locale, profile_position, name, account_key):
         # Adjusted base directory to include 'Promo_placement'
         base_dir = "Screenshots"
         # Adjusted date format to 'DD.MM.YYYY'
@@ -27,7 +27,7 @@ class CustomMethods(Page):
         counter = 1
 
         # Construct the screenshot path with a generic filename or a specific naming convention
-        screenshot_path = os.path.join(dir_path, f"screenshot({counter}).png")
+        screenshot_path = os.path.join(dir_path, f"({account_key})({name})({counter}).png")
 
         # Check if the screenshot file already exists and increment the counter until a unique filename is found
         while os.path.exists(screenshot_path):
