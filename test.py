@@ -1,15 +1,11 @@
-import re
 import pytest
 import time
 import config
-import random
 from pages.player_profile import Profile
-from playwright.sync_api import Playwright, sync_playwright, expect
+from playwright.sync_api import Playwright
 from methods import CustomMethods
 from pages.welcomePage import WelcomePage
 from evpn import ExpressVpnApi
-
-
 
 @pytest.mark.parametrize("account_key", config.accounts.keys())
 def test(playwright: Playwright, account_key: str) -> None:
@@ -20,7 +16,6 @@ def test(playwright: Playwright, account_key: str) -> None:
     custom_methods = CustomMethods(page)
     email = config.accounts[account_key]['username']
     password = config.accounts[account_key]['password']
-
 
     with ExpressVpnApi() as api:
         locations = api.locations  # get available locations
@@ -56,16 +51,14 @@ def test(playwright: Playwright, account_key: str) -> None:
     time.sleep(10)
 
     time.sleep(10)
-    custom_methods.capture_screenshot(account_key, 'Deposit')
+
+    custom_methods.capture_screenshot(account_key, 'Deposit', 'Deposit', account_key)
+
     custom_methods.visit_page(config.wallet_url_withdrawal)
     custom_methods.check_to_be_visible(Profile.profile_elements['send_withdrawal_btn'])
     time.sleep(10)
-    custom_methods.capture_screenshot(account_key, 'Withdrawal')
+
+    custom_methods.capture_screenshot(account_key, 'Withdrawal', 'Withdrawal', account_key)
 
     browser.close()
-
-
-
-# with sync_playwright() as playwright:
-#     test(playwright)
 
