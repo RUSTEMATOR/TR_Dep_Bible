@@ -1,10 +1,12 @@
 accounts = {
     'NL': {'username': 'netherlands@kingbilly.xyz', 'password': 'KingBilly123!'},
-    'DE': {'username': 'germany@kingbilly.xyz', 'password': 'KingBilly123!'}, 
+    'DE': {'username': 'germany@kingbilly.xyz', 'password': 'KingBilly123!'},
     'BE': {'username': 'belgium@kingbilly.xyz', 'password': 'KingBilly123!'},
     'AU': {'username': 'australia@kingbilly.xyz', 'password': 'KingBilly123!'},
     'PT': {'username': 'portugal@kingbilly.xyz', 'password': 'KingBilly123!'},
-    'AT': {'username': 'austria@kingbilly.xyz', 'password': 'KingBilly123!'}
+    'CH':{'username': 'switzerland@kingbilly.xyz', 'password': 'KingBilly123!'},
+    'AT': {'username': 'austria@kingbilly.xyz', 'password': 'KingBilly123!'},
+    'FR': {'username': 'France@kingbilly.xyz', 'password': 'KingBilly123!'}
 
 }
 

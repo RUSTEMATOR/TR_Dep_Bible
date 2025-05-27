@@ -67,7 +67,8 @@ class CustomMethods(Page):
     # @pytest.mark.parametrize("locale, username, password", [(key, val['locale'], val['username'], val['password']) for key, val in config.accounts])
     def base_login(self, email, password):
         self.visit_page(config.base_url)
-        
+        self.page.wait_for_timeout(3000)
+        self.page.reload()
         if self.check_not_visible(WelcomePage.login_button):
             self.click_on(WelcomePage.login_button_DE)
         else:
