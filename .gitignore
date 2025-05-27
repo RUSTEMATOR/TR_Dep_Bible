@@ -2,4 +2,8 @@ client_secrets.json
 /.venv
 drive_upl.py
 Screenshots/
+__pycache__
+.idea
+.pytest_cache
+bibi.py
 

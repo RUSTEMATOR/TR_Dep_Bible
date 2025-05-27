@@ -1,12 +1,17 @@
 import pytest
 import time
 import config
+
 from pages.player_profile import Profile
 from playwright.sync_api import Playwright
 from methods import CustomMethods
 from pages.welcomePage import WelcomePage
 from evpn import ExpressVpnApi
 
+
+def handler(self):
+    self.page.get_by_title('Cancel').click()
+    time.sleep(2)
 @pytest.mark.parametrize("account_key", config.accounts.keys())
 def test(playwright: Playwright, account_key: str) -> None:
 
@@ -22,35 +27,38 @@ def test(playwright: Playwright, account_key: str) -> None:
         loc = next((location for location in locations if location["country_code"] == account_key), None)
         api.connect(loc["id"])
 
+        page.pause()
+
     custom_methods.base_login(email, password)
 
-    time.sleep(10)
+    time.sleep(5)
 
-    if page.locator(WelcomePage.wrapper).is_visible():
-        page.reload()
-    else:
-        pass
+    page.add_locator_handler(page.locator('[data-test-id="tourn_modal"]'), handler)
 
-    time.sleep(10)
-    if page.locator(WelcomePage.pop_up).is_visible():
-        page.reload()
-    else:
-        pass
+    # if page.locator(WelcomePage.wrapper).is_visible():
+    #     page.reload()
+    # else:
+    #     pass
+    #
+    # time.sleep(10)
+    # if page.locator(WelcomePage.pop_up).is_visible():
+    #     page.reload()
+    # else:
+    #     pass
+    #
+    # time.sleep(10)
+    # if page.locator(WelcomePage.wrapper).is_visible():
+    #     page.reload()
+    # else:
+    #     pass
 
-    time.sleep(10)
-    if page.locator(WelcomePage.wrapper).is_visible():
-        page.reload()
-    else:
-        pass
 
-    custom_methods.check_to_be_visible(WelcomePage.deposit_button)
     custom_methods.visit_page(config.wallet_url_deposit)
 
 
-    custom_methods.check_to_be_visible(Profile.profile_elements['deposit_promo_code'])
+    page.wait_for_load_state(state='load')
     time.sleep(10)
 
-    time.sleep(10)
 
     custom_methods.capture_screenshot(account_key, 'Deposit', 'Deposit', account_key)
 
